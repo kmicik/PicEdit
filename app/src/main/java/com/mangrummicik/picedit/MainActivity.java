@@ -2,6 +2,7 @@ package com.mangrummicik.picedit;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -46,5 +47,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+        Button b = findViewById(v.getId());
+
+        switch (v.getId()) {
+            case R.id.red_button:
+                Log.d("Button pressed: ", b.getText() + "");
+                break;
+            case R.id.blue_button:
+                Log.d("Button pressed: ", b.getText() + "");
+                break;
+            case R.id.green_button:
+                Log.d("Button pressed: ", b.getText() + "");
+                break;
+            case R.id.plus_button:
+                Log.d("Button pressed: ", b.getText() + "");
+                break;
+            case R.id.minus_button:
+                Log.d("Button pressed: ", b.getText() + "");
+                break;
+        }
     }
 }
