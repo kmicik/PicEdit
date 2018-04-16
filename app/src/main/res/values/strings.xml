@@ -3,7 +3,7 @@
     <string name="red_button">RED</string>
     <string name="blue_button">BLUE</string>
     <string name="green_button">GREEN</string>
-    <string name="reset_button">RESET</string>
+    <string name="reset_button">CLEAR</string>
     <string name="plus_button">+</string>
     <string name="minus_button">-</string>
     <string name="size_text">SIZE = </string>

@@ -8,42 +8,39 @@
 
     <Button
         android:id="@+id/red_button"
-        android:background="#ff0000"
-        android:layout_width="wrap_content"
+        android:layout_width="43dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/red_button" />
+        android:background="#ff0000" />
 
     <Button
         android:id="@+id/blue_button"
-        android:background="#0000ff"
-        android:layout_width="wrap_content"
+        android:layout_width="43dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/red_button"
-        android:text="@string/blue_button" />
+        android:background="#0000ff" />
 
     <Button
         android:id="@+id/green_button"
-        android:background="#00ff00"
-        android:layout_width="wrap_content"
+        android:layout_width="43dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/blue_button"
-        android:text="@string/green_button" />
+        android:background="#00ff00" />
 
     <Button
         android:id="@+id/reset_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:text="@string/reset_button" />
 
     <Button
         android:id="@+id/minus_button"
-        android:layout_width="wrap_content"
+        android:layout_width="41dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -51,27 +48,28 @@
 
     <Button
         android:id="@+id/plus_button"
-        android:layout_width="wrap_content"
+        android:layout_width="44dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/reset_button"
+        android:layout_toStartOf="@+id/minus_button"
         android:text="@string/plus_button" />
 
     <TextView
         android:id="@+id/sizeTextView"
-        android:layout_width="204dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/minus_button"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="96dp"
         android:text="@string/size_text"
         android:textAlignment="center" />
 
     <com.mangrummicik.picedit.PicEditView
         android:id="@+id/drawingPad"
-        android:background="@drawable/shia_road"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/plus_button"
-        android:layout_below="@id/red_button"/>
+        android:layout_below="@id/reset_button"
+        android:background="@drawable/shia_road" />
 
 </RelativeLayout>
