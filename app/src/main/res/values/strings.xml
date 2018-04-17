@@ -7,4 +7,8 @@
     <string name="plus_button">+</string>
     <string name="minus_button">-</string>
     <string name="size_text">SIZE = </string>
+    <string name="white_button">WHITE</string>
+    <string name="circle_button">CIRCLE</string>
+    <string name="rectangle_button">RECT</string>
+    <string name="line_button">LINE</string>
 </resources>

@@ -21,10 +21,10 @@
         android:layout_width="43dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/red_button"
+        android:layout_toEndOf="@+id/clear_button"
         android:background="#0000ff"
         android:text="@string/blue_button"
-        android:textColor="#0000ff"/>
+        android:textColor="#0000ff" />
 
     <Button
         android:id="@+id/green_button"
@@ -34,7 +34,7 @@
         android:layout_toEndOf="@+id/blue_button"
         android:background="#00ff00"
         android:text="@string/green_button"
-        android:textColor="#00ff00"/>
+        android:textColor="#00ff00" />
 
     <Button
         android:id="@+id/clear_button"
@@ -62,20 +62,54 @@
 
     <TextView
         android:id="@+id/sizeTextView"
-        android:layout_width="100dp"
+        android:layout_width="85dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/minus_button"
+        android:layout_above="@+id/red_button"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="96dp"
         android:text="@string/size_text"
         android:textAlignment="center" />
 
     <com.mangrummicik.picedit.PicEditView
         android:id="@+id/drawingPad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="363dp"
         android:layout_above="@id/plus_button"
         android:layout_below="@id/clear_button"
+        android:layout_marginBottom="52dp"
         android:background="@drawable/shia_road" />
+
+    <Button
+        android:id="@+id/white_button"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/clear_button"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:text="@string/white_button"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/circle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/circle_button" />
+
+    <Button
+        android:id="@+id/rectangle_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/circle_button"
+        android:text="@string/rectangle_button" />
+
+    <Button
+        android:id="@+id/line_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/rectangle_button"
+        android:text="@string/line_button" />
 
 </RelativeLayout>
