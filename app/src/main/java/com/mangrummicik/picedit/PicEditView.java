@@ -18,8 +18,12 @@ public class PicEditView extends View implements View.OnTouchListener{
     private final int DEFAULT_SIZE = 10;
     private final int MAX_SIZE = 100;
     private final int MIN_SIZE = 5;
-    private final int DEFAULT_COLOR = Color.GREEN;
+    private final int DEFAULT_COLOR = Color.WHITE;
+    public static final int LINE = 1;
+    public static final int RECTANGLE = 2;
+    public static final int CIRCLE = 3;
     private int mPenColor;
+    public int mCurrentShape;
 
     private ArrayList<Path> mPaths;
     private ArrayList<Paint> mPaints;
@@ -100,6 +104,11 @@ public class PicEditView extends View implements View.OnTouchListener{
 
     }
 
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    Line
+
+/////////////////////////////////////////////////////////////////////////////////////////////////*/
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
