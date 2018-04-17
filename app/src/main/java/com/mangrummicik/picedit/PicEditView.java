@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -31,10 +32,12 @@ public class PicEditView extends View {
 
     private ArrayList<Path> mPaths;
     private ArrayList<Paint> mPaints;
+    private ArrayList<Rect> rectangles;
 
     private Path mPath;
     private Paint mPaint;
     private float mX, mY, oldMx, oldMy;
+    private int coorX, coorY, coorH, coorW, downX, downY;
 
     public PicEditView(Context context) {
         super(context);
@@ -65,6 +68,7 @@ public class PicEditView extends View {
         this.mCurrentShape = DEFAULT_SHAPE;
         this.mPaths = new ArrayList<Path>();
         this.mPaints = new ArrayList<Paint>();
+        this.rectangles = new ArrayList<Rect>();
         this.mPath = new Path();
         this.addPath();
         this.mX = mY = oldMx = oldMy =(float)0.0;
@@ -118,7 +122,6 @@ public class PicEditView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         switch (mCurrentShape) {
             case LINE:
                 onDrawLine(canvas);
@@ -134,9 +137,6 @@ public class PicEditView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        mX = event.getX();
-        mY = event.getY();
-
         switch (mCurrentShape) {
             case LINE:
                 onTouchEventLine(event);
@@ -191,40 +191,43 @@ public class PicEditView extends View {
 
     ----------------------------------------------------------------------------------------------*/
 
-    private void onDrawRect (Canvas canvas) {
+   private void onDrawRect (Canvas canvas) {
 
-            drawRectangle(canvas, mPaint);
+       for(Rect rect : rectangles)
+        canvas.drawRect(rect, mPaint);
 
     }
 
     private void onTouchEventRectangle(MotionEvent event) {
-        mX = event.getX();
-        mY = event.getY();
+        downX = Math.round(event.getX());
+        downY = Math.round(event.getY());
         Log.d("Touched: ", "(" + mX + ", " + mY + ")");
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                //this.addPath();
-                oldMx = mX;
-                oldMy = mY;
+                this.addPath();
+                coorX = downX;
+                coorY = downY;
                 break;
             case MotionEvent.ACTION_MOVE:
-                //this.mPath.lineTo(mX, mY);
+                coorH = downX;
+                coorW = downY;
                 break;
             case MotionEvent.ACTION_UP:
-                drawRectangle(mCanvas, mPaint);
+                rectangles.add(new Rect(coorX, coorY, coorH, coorW));
+                //drawRectangle(mCanvas, mPaint);
                 break;
         }
         this.invalidate();
     }
 
-    private void drawRectangle(Canvas canvas, Paint paint) {
+    /*private void drawRectangle(Canvas canvas, Paint paint) {
         float right = oldMx > mX ? oldMx : mX;
         float left = oldMx > mX ? mX : oldMx;
         float bottom = oldMy > mY ? oldMy : mY;
         float top = oldMy > mY ? mY : oldMy;
         canvas.drawRect(left, top , right, bottom, paint);
-    }
+    }*/
 
     /*----------------------------------------------------------------------------------------------
 

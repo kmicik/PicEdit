@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private PicEditView drawingPad;
-    Button redButton, blueButton, greenButton, resetButton, plusButton, minusButton;
+    Button lineButton, rectButton, redButton, whiteButton, blueButton, greenButton, resetButton, plusButton, minusButton;
     TextView sizeTv;
     private static final int SIZE_INCREMENT = 5;
 
@@ -23,8 +23,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
+
+        lineButton = findViewById(R.id.line_button);
+        lineButton.setOnClickListener(this);
+
+        rectButton = findViewById(R.id.rectangle_button);
+        rectButton.setOnClickListener(this);
+
         redButton = findViewById(R.id.red_button);
         redButton.setOnClickListener(this);
+
+        whiteButton = findViewById(R.id.white_button);
+        whiteButton.setOnClickListener(this);
 
         blueButton = findViewById(R.id.blue_button);
         blueButton.setOnClickListener(this);
@@ -54,9 +64,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Button b = findViewById(v.getId());
 
         switch (v.getId()) {
+            case R.id.line_button:
+                drawingPad.mCurrentShape = PicEditView.LINE;
+                break;
+            case R.id.rectangle_button:
+                drawingPad.mCurrentShape = PicEditView.RECTANGLE;
+
             case R.id.red_button:
                 drawingPad.setPenColor(Color.RED);
                 Log.d("Button test: ", b.getText() + "");
+                break;
+            case R.id.white_button:
+                drawingPad.setPenColor(Color.WHITE);
                 break;
             case R.id.blue_button:
                 drawingPad.setPenColor(Color.BLUE);
