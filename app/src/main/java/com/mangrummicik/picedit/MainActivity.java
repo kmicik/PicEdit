@@ -1,6 +1,7 @@
 package com.mangrummicik.picedit;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private PicEditView drawingPad;
     Button redButton, blueButton, greenButton, resetButton, plusButton, minusButton;
     TextView sizeTv;
+    private static final int SIZE_INCREMENT = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         greenButton = findViewById(R.id.green_button);
         greenButton.setOnClickListener(this);
 
-        resetButton = findViewById(R.id.reset_button);
+        resetButton = findViewById(R.id.clear_button);
         resetButton.setOnClickListener(this);
 
         plusButton = findViewById(R.id.plus_button);
@@ -39,9 +41,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         minusButton = findViewById(R.id.minus_button);
         minusButton.setOnClickListener(this);
 
-        sizeTv = findViewById(R.id.sizeTextView);
-
         drawingPad = findViewById(R.id.drawingPad);
+
+        sizeTv = findViewById(R.id.sizeTextView);
+        sizeTv.setText("SIZE = " + drawingPad.getSize());
+
     }
 
     @Override
@@ -51,19 +55,31 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.red_button:
-                Log.d("Button pressed: ", b.getText() + "");
+                drawingPad.setPenColor(Color.RED);
+                Log.d("Button test: ", b.getText() + "");
                 break;
             case R.id.blue_button:
-                Log.d("Button pressed: ", b.getText() + "");
+                drawingPad.setPenColor(Color.BLUE);
+                Log.d("Button test: ", b.getText() + "");
                 break;
             case R.id.green_button:
-                Log.d("Button pressed: ", b.getText() + "");
+                drawingPad.setPenColor(Color.GREEN);
+                Log.d("Button test: ", b.getText() + "");
                 break;
             case R.id.plus_button:
-                Log.d("Button pressed: ", b.getText() + "");
+                drawingPad.changeSize(+SIZE_INCREMENT);
+                sizeTv.setText("SIZE = " + drawingPad.getSize());
+                Log.d("Button test: ", b.getText() + "");
                 break;
             case R.id.minus_button:
-                Log.d("Button pressed: ", b.getText() + "");
+                drawingPad.changeSize(-SIZE_INCREMENT);
+                sizeTv.setText("SIZE = " + drawingPad.getSize());
+                Log.d("Button test: ", b.getText() + "");
+                break;
+            case R.id.clear_button:
+                drawingPad.clear();
+                sizeTv.setText("SIZE = " + drawingPad.getSize());
+                Log.d("Button test: ", b.getText() + "");
                 break;
         }
     }
