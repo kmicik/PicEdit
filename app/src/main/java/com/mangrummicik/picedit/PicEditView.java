@@ -12,7 +12,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class PicEditView extends View implements View.OnTouchListener{
+public class PicEditView extends View {
 
     private int mSize;
     private final int DEFAULT_SIZE = 10;
@@ -56,7 +56,6 @@ public class PicEditView extends View implements View.OnTouchListener{
         this.mPath = new Path();
         this.addPath();
         this.mX = mY = (float)0.0;
-        this.setOnTouchListener(this);
 
     }
 
@@ -104,14 +103,49 @@ public class PicEditView extends View implements View.OnTouchListener{
 
     }
 
-/*///////////////////////////////////////////////////////////////////////////////////////////////////
-
-    Line
-
-/////////////////////////////////////////////////////////////////////////////////////////////////*/
     @Override
-    protected void onDraw(Canvas canvas) {
+    public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        switch (mCurrentShape) {
+            case LINE:
+                onDrawLine(canvas);
+                break;
+            case RECTANGLE:
+                onDrawRect(canvas);
+                break;
+            case CIRCLE:
+                onDrawCircle(canvas);
+                break;
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mX = event.getX();
+        mY = event.getY();
+
+        switch (mCurrentShape) {
+            case LINE:
+                onTouchEventLine(event);
+                break;
+            case RECTANGLE:
+                onTouchEventRectangle(event);
+                break;
+            case CIRCLE:
+                onTouchEventCircle(event);
+                break;
+        }
+        return true;
+    }
+
+    /*----------------------------------------------------------------------------------------------
+
+        Line
+
+    ----------------------------------------------------------------------------------------------*/
+
+    private void onDrawLine(Canvas canvas) {
 
         for (int i = 0; i < mPaths.size(); ++i) {
 
@@ -120,8 +154,7 @@ public class PicEditView extends View implements View.OnTouchListener{
         }
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    private void onTouchEventLine(MotionEvent event) {
 
         mX = event.getX();
         mY = event.getY();
@@ -139,7 +172,32 @@ public class PicEditView extends View implements View.OnTouchListener{
                 break;
         }
         this.invalidate();
+    }
+    /*----------------------------------------------------------------------------------------------
 
-        return true;
+        Rectangle
+
+    ----------------------------------------------------------------------------------------------*/
+
+    private void onDrawRect (Canvas canvas) {
+
+    }
+
+    private void onTouchEventRectangle(MotionEvent event) {
+
+    }
+
+    /*----------------------------------------------------------------------------------------------
+
+        Circle
+
+    ----------------------------------------------------------------------------------------------*/
+
+    private void onDrawCircle (Canvas canvas) {
+
+    }
+
+    private void onTouchEventCircle(MotionEvent event) {
+
     }
 }
