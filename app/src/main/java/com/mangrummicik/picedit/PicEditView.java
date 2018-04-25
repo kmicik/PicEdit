@@ -122,17 +122,13 @@ public class PicEditView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        switch (mCurrentShape) {
-            case LINE:
+
                 onDrawLine(canvas);
-                break;
-            case RECTANGLE:
+
                 onDrawRect(canvas);
-                break;
-            case CIRCLE:
+
                 onDrawCircle(canvas);
-                break;
-        }
+
     }
 
     @Override
